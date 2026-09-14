@@ -51,13 +51,12 @@ class _LoginPageState extends State<LoginPage> {
 }
 
   @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Ingresar'),
-      ),
+Widget build(BuildContext context) {
+  return Scaffold(
+    backgroundColor: Colors.black,
 
-      body: Padding(
+    body: SafeArea(
+      child: Padding(
         padding: const EdgeInsets.all(24),
 
         child: Column(
@@ -65,20 +64,31 @@ class _LoginPageState extends State<LoginPage> {
 
           children: [
 
-            const Text(
-              'CALIFICACIONES LSB',
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.bold,
-              ),
+            Image.asset(
+              'assets/images/logo_le.jpg',
+              width: 130,
+              height: 130,
             ),
 
-            const SizedBox(height: 10),
+            const SizedBox(height: 20),
 
             const Text(
-              'Inicie sesión para continuar',
+              'SISTEMA ACADÉMICO LSB',
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
+              textAlign: TextAlign.center,
+            ),
+
+            const SizedBox(height: 8),
+
+            const Text(
+              'Ingrese sus datos para continuar',
               style: TextStyle(
                 fontSize: 16,
+                color: Colors.white70,
               ),
             ),
 
@@ -86,11 +96,34 @@ class _LoginPageState extends State<LoginPage> {
 
             TextField(
               controller: usuarioController,
-              decoration: const InputDecoration(
+              style: const TextStyle(
+                color: Colors.white,
+              ),
+              decoration: InputDecoration(
                 labelText: 'Usuario',
                 hintText: 'Ingrese su usuario',
-                prefixIcon: Icon(Icons.person),
-                border: OutlineInputBorder(),
+                labelStyle: const TextStyle(
+                  color: Colors.white70,
+                ),
+                hintStyle: const TextStyle(
+                  color: Colors.white38,
+                ),
+                prefixIcon: const Icon(
+                  Icons.person,
+                  color: Colors.white70,
+                ),
+                border: const OutlineInputBorder(),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white54,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                    width: 2,
+                  ),
+                ),
               ),
             ),
 
@@ -99,19 +132,42 @@ class _LoginPageState extends State<LoginPage> {
             TextField(
               controller: contrasenaController,
               obscureText: ocultarContrasena,
+              style: const TextStyle(
+                color: Colors.white,
+              ),
               decoration: InputDecoration(
                 labelText: 'Contraseña',
                 hintText: 'Ingrese su contraseña',
-                prefixIcon: const Icon(Icons.lock),
+                labelStyle: const TextStyle(
+                  color: Colors.white70,
+                ),
+                hintStyle: const TextStyle(
+                  color: Colors.white38,
+                ),
+                prefixIcon: const Icon(
+                  Icons.lock,
+                  color: Colors.white70,
+                ),
                 border: const OutlineInputBorder(),
+                enabledBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white54,
+                  ),
+                ),
+                focusedBorder: const OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Colors.white,
+                    width: 2,
+                  ),
+                ),
 
                 suffixIcon: IconButton(
                   icon: Icon(
                     ocultarContrasena
                         ? Icons.visibility
                         : Icons.visibility_off,
+                    color: Colors.white70,
                   ),
-
                   onPressed: () {
                     setState(() {
                       ocultarContrasena = !ocultarContrasena;
@@ -127,16 +183,21 @@ class _LoginPageState extends State<LoginPage> {
               width: double.infinity,
 
               child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.white,
+                  foregroundColor: Colors.black,
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 14,
+                  ),
+                ),
+
                 onPressed: iniciarSesion,
 
-                child: const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 14),
-
-                  child: Text(
-                    'INGRESAR',
-                    style: TextStyle(
-                      fontSize: 18,
-                    ),
+                child: const Text(
+                  'INGRESAR',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
@@ -144,6 +205,7 @@ class _LoginPageState extends State<LoginPage> {
           ],
         ),
       ),
-    );
-  }
+    ),
+  );
+}
 }

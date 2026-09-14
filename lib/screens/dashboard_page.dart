@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'students_page.dart';
+import 'teachers_page.dart';
+import 'subjects_page.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({super.key});
@@ -77,14 +79,15 @@ class DashboardPage extends StatelessWidget {
               leading: const Icon(Icons.person),
               title: const Text('Docentes'),
               onTap: () {
-                Navigator.pop(context);
+  Navigator.pop(context);
 
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(
-                    content: Text('Módulo de docentes próximamente'),
-                  ),
-                );
-              },
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const TeachersPage(),
+    ),
+  );
+},
             ),
 
             ListTile(
@@ -253,15 +256,33 @@ class DashboardPage extends StatelessWidget {
       borderRadius: BorderRadius.circular(12),
 
       onTap: () {
-        if (titulo == 'Estudiantes') {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const StudentsPage(),
-            ),
-          );
-        }
-      },
+  if (titulo == 'Estudiantes') {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const StudentsPage(),
+      ),
+    );
+  }
+
+  if (titulo == 'Docentes') {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => const TeachersPage(),
+      ),
+    );
+  }
+
+  if (titulo == 'Materias') {
+  Navigator.push(
+    context,
+    MaterialPageRoute(
+      builder: (context) => const SubjectsPage(),
+    ),
+  );
+}
+},
 
       child: Padding(
         padding: const EdgeInsets.all(15),
